@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "Brian",
+      "description": "A weird looking dog named Brian",
+      "image": "assets/images/profile/brian.jpg",
+      "price": 20.62
+    }
+  ],
+  "titles": [
+    "Moon Sailor",
+    "Ink Tinkerer",
+    "Glitch Bard"
+  ]
+}

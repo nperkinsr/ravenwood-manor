@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap");
+
+:root {
+  --black: #050505;
+  --dark-grey: #191817;
+  --white: #ffffff;
+  --parchment: #f1dfc1;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--black);
+  color: var(--white);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.game-wrapper {
+  width: min(100%, 1300px);
+  min-height: 100vh;
+  margin: 0 auto;
+  background: var(--black);
+}
+
+.hero {
+  position: relative;
+  display: grid;
+  min-height: 150px;
+  place-items: center;
+  overflow: hidden;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.52)),
+    url("assets/images/hero.jpg");
+  background-position: center top;
+  background-size: cover;
+  text-align: center;
+}
+
+.hero-content {
+  padding: 24px 18px 34px;
+}
+
+h1 {
+  margin: 0;
+  margin-top: 3rem;
+  color: var(--parchment);
+  font-family: "MedievalSharp", "IM Fell English SC", Georgia, serif;
+  font-size: 2.5rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.subtitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 18px 0 0;
+  color: var(--parchment);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.9rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.subtitle span {
+  display: block;
+  width: min(15vw, 130px);
+  height: 1px;
+  background: currentColor;
+}
+
+.game-layout {
+  display: grid;
+  grid-template-columns: 350px 600px 350px;
+  column-gap: 0;
+  row-gap: 12px;
+  padding: 0;
+}
+
+.side-column,
+.center-column,
+.room-grid {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.side-column {
+  background: var(--dark-grey);
+  padding: 15px;
+}
+
+.ornate-panel {
+  position: relative;
+  min-height: 180px;
+}
+
+.room-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 12px;
+  row-gap: 24px;
+  padding: 0 15px;
+}
+
+.room-card {
+  display: grid;
+  place-items: center;
+  min-height: 200px;
+  background: var(--dark-grey);
+  color: var(--parchment);
+  font-size: 1.4rem;
+}
+
+.side-column .ornate-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: auto;
+  height: auto;
+  border: 47px solid transparent;
+  border-image: url("assets/images/frame.png") 47 / 47px / 0 stretch;
+  pointer-events: none;
+}
