@@ -8,20 +8,79 @@
 
   <title>Auto Clicker | Ravenwood Manor</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Lora:wght@400;500;600&family=MedievalSharp&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
 
   <main class="game-wrapper">
+    <!-- ========================================= -->
+    <!-- ==========   GAME LAYOUT   ========== -->
+    <!-- ========================================= -->
     <section class="game-layout">
+      <!-- ========================================= -->
+      <!-- ==========   LEFT COLUMN   ========== -->
+      <!-- ========================================= -->
       <aside class="side-column">
-        <section id="counter-section" class="ornate-panel counter-section"></section>
+        <!-- ========================================= -->
+        <!-- ==========   COUNTER SECTION   ========== -->
+        <!-- ========================================= -->
+        <section id="counter-section" class="ornate-panel counter-section">
+          <div class="spook-counter-main">
+            <img src="assets/images/spook-counter.png" alt="Spook Icon" class="spook-icon">
+            <div class="spook-counter-info">
+              <h4>Spooks</h4>
+              <p id="spook-count">0</p>
+              <div class="spook-rates">
+                <p id="spook-rate-per-second">Per second: <span>0</span></p>
+                <p id="spook-rate-per-click">Per click: <span>1</span></p>
+              </div>
+            </div>
+          </div>
+          <button id="collect-spooks-button" class="collect-button">Collect Spooks</button>
+          <hr>
+          <div id="decay-counter" class="currency-counter">
+            <img src="assets/images/decay-counter.png" alt="Decay Icon" class="currency-icon">
+            <div class="currency-info">
+              <p class="currency-name">Decay</p>
+              <p id="decay-count" class="currency-amount">0</p>
+            </div>
+          </div>
+          <hr>
+          <div id="gold-counter" class="currency-counter">
+            <img src="assets/images/gold-counter.png" alt="Gold Icon" class="currency-icon">
+            <div class="currency-info">
+              <p class="currency-name">Gold</p>
+              <p id="gold-count" class="currency-amount">0</p>
+            </div>
+          </div>
+          <hr>
+          <div id="ectoplasm-counter" class="currency-counter">
+            <img src="assets/images/ectoplasm-counter.png" alt="Ectoplasm Icon" class="currency-icon">
+            <div class="currency-info">
+              <p class="currency-name">Ectoplasm</p>
+              <p id="ectoplasm-count" class="currency-amount">0</p>
+            </div>
+          </div>
+
+
+        </section>
         <section id="entities-section" class="ornate-panel entities-section"></section>
         <section id="upgrades-section" class="ornate-panel upgrades-section"></section>
       </aside>
 
+      <!-- ========================================= -->
+      <!-- ==========   CENTER COLUMN   ========== -->
+      <!-- ========================================= -->
       <section class="center-column">
+        <!-- ========================================= -->
+        <!-- ==========   HERO SECTION   ========== -->
+        <!-- ========================================= -->
         <section class="hero">
           <div class="hero-content">
             <h1 id="game-title">Ravenwood Manor</h1>
@@ -29,6 +88,9 @@
           </div>
         </section>
 
+        <!-- ========================================= -->
+        <!-- ==========   ROOM GRID   ========== -->
+        <!-- ========================================= -->
         <section class="room-grid">
           <article id="library-room" class="room-card">Library</article>
           <article id="kitchen-room" class="room-card">Kitchen</article>
@@ -39,6 +101,9 @@
         </section>
       </section>
 
+      <!-- ========================================= -->
+      <!-- ==========   RIGHT COLUMN   ========== -->
+      <!-- ========================================= -->
       <aside class="side-column">
         <section id="graveyard-section" class="ornate-panel graveyard-section"></section>
         <section id="decay-section" class="ornate-panel decay-section"></section>
@@ -46,6 +111,7 @@
       </aside>
     </section>
   </main>
+  <script src="scripts.js"></script>
 </body>
 
 </html>
