@@ -1,16 +1,129 @@
 {
-  "items": [
+  "relics": [{
+      "id": "haunted_ring",
+      "name": "Haunted Ring",
+      "image": "assets/images/default.jpg",
+      "currency": "spooks",
+      "baseCost": 100,
+      "costMultiplier": 1.2,
+      "maxOwned": 5,
+      "effectType": "clickPower",
+      "effectValue": 1,
+      "description": "+1 Spook per click"
+    },
     {
-      "id": 1,
-      "name": "Brian",
-      "description": "A weird looking dog named Brian",
-      "image": "assets/images/profile/brian.jpg",
-      "price": 20.62
-    }
-  ],
-  "titles": [
-    "Moon Sailor",
-    "Ink Tinkerer",
-    "Glitch Bard"
-  ]
+      "id": "possessed_finger",
+      "name": "Possessed Finger",
+      "image": "assets/images/default.jpg",
+      "currency": "spooks",
+      "baseCost": 100,
+      "costMultiplier": 1.2,
+      "maxOwned": 5,
+      "effectType": "spooksPerSecond",
+      "effectValue": 1,
+      "description": "+1 Spook per second"
+    },
+    {
+      "id": "monkey_paw",
+      "name": "Monkey Paw",
+      "image": "assets/images/default.jpg",
+      "currency": "gold",
+      "baseCost": 120,
+      "costMultiplier": 1.2,
+      "effectType": "instantSpooksPercent",
+      "effectValue": 10,
+      "description": "+10% current total Spooks but -2% Decay"
+    },
+    {
+      "id": "melted_candle",
+      "name": "Melted Candle",
+      "image": "assets/images/default.jpg",
+      "currency": "gold",
+      "baseCost": 50,
+      "costMultiplier": 1.2,
+      "effectType": "temporaryClickBoost",
+      "effectValue": 15,
+      "description": "+15% Spooks from clicking for 1 minute"
+    },
+    {
+      "id": "cracked_mirror",
+      "name": "Cracked Mirror",
+      "image": "assets/images/default.jpg",
+      "currency": "gold",
+      "baseCost": 150,
+      "costMultiplier": 1.2,
+      "effectType": "temporaryEntityBoost",
+      "effectValue": 5,
+      "description": "+5% to all entity effects for 1 minute"
+    },
+    {
+      "id": "ashen_urn",
+      "name": "Ashen Urn",
+      "image": "assets/images/default.jpg",
+      "currency": "gold",
+      "baseCost": 80,
+      "costMultiplier": 1.2,
+      "effectType": "convertDecayToSpooks",
+      "effectValue": 1000,
+      "description": "Converts 1000 Decay into Spooks instantly"
+    },
+    {
+      "id": "blood_contract",
+      "name": "Blood Contract",
+      "image": "assets/images/default.jpg",
+      "currency": "gold",
+      "baseCost": 130,
+      "costMultiplier": 1.2,
+      "effectType": "convertSpooksToDecay",
+      "effectValue": 1000,
+      "description": "Converts 1000 Spooks into Decay"
+    },
+    {
+      "id": "forgotten_ledger",
+      "name": "Forgotten Ledger",
+      "image": "assets/images/default.jpg",
+      "currency": "gold",
+      "baseCost": 240,
+      "costMultiplier": 1.2,
+      "effectType": "increaseAllEntityLevels",
+      "effectValue": 1,
+      "description": "+1 level to all entities"
+    },
+    {
+      "id": "grave_dust",
+      "name": "Grave Dust",
+      "image": "assets/images/default.jpg",
+      "currency": "gold",
+      "baseCost": 80,
+      "costMultiplier": 1.2,
+      "effectType": "instantDecay",
+      "effectValue": 800,
+      "description": "+800 Decay instantly"
+    },
+    {
+      "id": "torn_page",
+      "name": "Torn Page",
+      "image": "assets/images/default.jpg",
+      "currency": "gold",
+      "baseCost": 130,
+      "costMultiplier": 1.2,
+      "effectType": "temporaryEctoplasmBoost",
+      "effectValue": 25,
+      "description": "+25% ectoplasm fragment generation for 30 seconds"
+    },
+    {
+      "id": "phantom_vial",
+      "name": "Phantom Vial",
+      "image": "assets/images/default.jpg",
+      "currency": "gold",
+      "baseCost": 160,
+      "costMultiplier": 1.2,
+      "effectType": "duplicateFragments",
+      "effectValue": 10,
+      "description": "Duplicates 10% of current ectoplasm fragments"
+    }],
+  "graveyard": [],
+  "rooms": [],
+  "entities": []
 }
+
