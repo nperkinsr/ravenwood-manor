@@ -45,3 +45,18 @@ function collectSpooks() {
 }
 
 collectButton.addEventListener("click", collectSpooks);
+
+/////////////////////////////////////////////////////
+//////////          JSON FILE        ////////////////
+/////////////////////////////////////////////////////
+
+let gameData = {};
+
+async function loadGameData() {
+  const jsonFile = await fetch("data.json");
+  const jsonData = await jsonFile.json();
+
+  jsonObjects = jsonData;
+}
+
+loadGameData();
