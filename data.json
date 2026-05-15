@@ -2,7 +2,7 @@
   "relics": [{
       "id": "haunted_ring",
       "name": "Haunted Ring",
-      "image": "assets/images/default.jpg",
+      "image": "assets/images/relics/ring.png",
       "currency": "spooks",
       "baseCost": 100,
       "costMultiplier": 1.2,
@@ -14,7 +14,7 @@
     {
       "id": "possessed_finger",
       "name": "Possessed Finger",
-      "image": "assets/images/default.jpg",
+      "image": "assets/images/relics/finger.png",
       "currency": "spooks",
       "baseCost": 100,
       "costMultiplier": 1.2,

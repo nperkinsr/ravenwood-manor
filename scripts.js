@@ -6,6 +6,12 @@ const playerStatus = {
   spooks: 0,
   spooksPerSecond: 0,
   spooksPerClick: 1,
+  gold: 0,
+  decay: 0,
+  ectoplasm: 0,
+  ownedRelics: {},
+  graveyardUnlocked: false,
+  graveyardLevel: null,
 };
 
 /////////////////////////////////////////////////////
@@ -15,6 +21,8 @@ const playerStatus = {
 const spookCount = document.querySelector("#spook-count");
 const spooksPerSecond = document.querySelector("#spook-rate-per-second span");
 const spooksPerClick = document.querySelector("#spook-rate-per-click span");
+const collectButton = document.querySelector("#collect-spooks-button");
+const relicsSection = document.querySelector("#relics-section");
 
 /////////////////////////////////////////////////////
 //////////       COUNTER DISPLAY      ///////////////
@@ -26,13 +34,9 @@ function updateSpookCounterDisplay() {
   spooksPerClick.textContent = playerStatus.spooksPerClick;
 }
 
-updateSpookCounterDisplay();
-
 /////////////////////////////////////////////////////
 //////////       COLLECT SPOOKS      ////////////////
 /////////////////////////////////////////////////////
-
-const collectButton = document.querySelector("#collect-spooks-button");
 
 function collectSpooks() {
   playerStatus.spooks = playerStatus.spooks + playerStatus.spooksPerClick;
