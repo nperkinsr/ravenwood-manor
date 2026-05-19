@@ -358,7 +358,7 @@ button {
 .relic-card.inactive .relic-meta,
 .relic-card.inactive .relic-buy-button {
   filter: grayscale(1);
-  opacity: 0.48;
+  opacity: 0.5;
 }
 
 .relic-card.available {
