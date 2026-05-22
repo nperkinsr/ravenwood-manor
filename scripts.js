@@ -211,9 +211,9 @@ function getRelic(relicId) {
 
 /**
  * This function tries to buy a relic
- * First it checks if the player has enough currency
- * Then it checks if the relic has a maximum amount
- * If the player can buy the relic, it finishes the purchase
+ * 1. It checks if the player has enough currency
+ * 2. It checks if the relic has a maximum amount
+ * 3. If the player can buy the relic, it finishes the purchase
  */
 function buyRelicItem(relic) {
   const relicCost = getRelicCost(relic);
@@ -234,9 +234,9 @@ function buyRelicItem(relic) {
 
 /**
  * This function finishes a relic purchase
- * It subtracts the relic cost from the player's currency
- * It adds one to the amount owned for that relic
- * Then it applies the relic effect and updates the display
+ * 1. It subtracts the relic cost from the player's currency
+ * 2. It adds one to the amount owned for that relic
+ * 3. Then it applies the relic effect and updates the display
  */
 function finishRelicBuy(relic, relicCost, relicOwned) {
   playerStatus[relic.currency] = playerStatus[relic.currency] - relicCost;
@@ -253,14 +253,38 @@ function finishRelicBuy(relic, relicCost, relicOwned) {
 
 /**
  * This function applies the effect of a relic
- * Right now it handles click power relics
  */
 function useRelicEffect(relic) {
   if (relic.effectType === "clickPower") {
     playerStatus.spooksPerClick =
       playerStatus.spooksPerClick + relic.effectValue;
   }
+
+  // NEW EFFECT TYPE: SPOOKS PER SECOND
+  if (relic.effectType === "spooksPerSecond") {
+    playerStatus.spooksPerSecond =
+      playerStatus.spooksPerSecond + relic.effectValue;
+  }
 }
+
+/////////////////////////////////////////////////////
+//////////     SPOOKS PER SECOND     /////////////// //
+/////////////////////////////////////////////////////
+
+/**
+ * This function gives the player automatic spooks
+ * It uses the player's current spooksPerSecond value
+ */
+function collectSpooksPerSecond() {
+  if (playerStatus.spooksPerSecond > 0) {
+    playerStatus.spooks = playerStatus.spooks + playerStatus.spooksPerSecond;
+
+    updateSpookCounterDisplay();
+    loadRelics();
+  }
+}
+
+setInterval(collectSpooksPerSecond, 1000);
 
 /**
  * This function gets how many of a relic the player owns
