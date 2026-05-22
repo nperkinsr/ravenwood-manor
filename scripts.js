@@ -24,6 +24,7 @@ const spooksPerClick = document.querySelector("#spook-rate-per-click span");
 const collectButton = document.querySelector("#collect-spooks-button");
 const relicsSection = document.querySelector("#relics-section");
 const relicList = document.querySelector(".relic-list");
+const relicCardTemplate = document.querySelector("#relic-card-template");
 
 /////////////////////////////////////////////////////
 //////////       COUNTER DISPLAY      ///////////////
@@ -82,48 +83,39 @@ function loadRelics() {
     const relicCost = getRelicCost(relic);
     const relicOwned = getRelicOwned(relic);
     const relicButtonDisabled = getRelicDisabled(relic);
-    let relicCostText = `${relicCost} ${relic.currency}`;
-    let relicDisabledClass = "";
-    let relicMaxOwnedText = ""; // This is an empty string for maxOwned text
+    let relicCostText = relicCost + " " + relic.currency;
+    let relicMaxOwnedText = "";
 
-    if (relicButtonDisabled === "disabled") {
-      relicDisabledClass = "inactive";
-    }
-
-    // Check if maxOwned is defined for the relic
     if (relic.maxOwned !== undefined) {
-      relicMaxOwnedText = `<span>${relicOwned}/${relic.maxOwned}</span>`; // Display "owned/maxOwned" if maxOwned is defined
+      relicMaxOwnedText = relicOwned + "/" + relic.maxOwned;
 
       if (relicOwned >= relic.maxOwned) {
         relicCostText = "Maxed";
       }
     }
 
-    // The template to create the relics card HTML and add it to the relic list
-    relicList.innerHTML =
-      relicList.innerHTML +
-      `
-  <article class="relic-card ${relicDisabledClass}">
-    <img class="relic-image" src="${relic.image}">
-    
-    <div class="relic-content">
-      <h3 class="relic-name">${relic.name}</h3>
+    const relicCard = relicCardTemplate.content.cloneNode(true); // Clone the relic card template
+    const relicCardArticle = relicCard.querySelector(".relic-card");
+    const relicImage = relicCard.querySelector(".relic-image");
+    const relicName = relicCard.querySelector(".relic-name");
+    const relicCostElement = relicCard.querySelector(".relic-cost");
+    const relicOwnedElement = relicCard.querySelector(".relic-owned");
+    const relicDescription = relicCard.querySelector(".relic-description");
+    const relicBuyButton = relicCard.querySelector(".relic-buy-button");
 
-      <div class="relic-meta">
-        <span>${relicCostText}</span>
-        ${relicMaxOwnedText}
-      </div>
+    relicImage.src = relic.image;
+    relicName.textContent = relic.name;
+    relicCostElement.textContent = relicCostText;
+    relicOwnedElement.textContent = relicMaxOwnedText;
+    relicDescription.textContent = relic.description;
+    relicBuyButton.dataset.relicId = relic.id;
 
-      <p class="relic-description">
-        ${relic.description}
-      </p>
-    </div>
+    if (relicButtonDisabled === "disabled") {
+      relicCardArticle.classList.add("inactive");
+      relicBuyButton.disabled = true;
+    }
 
-    <button class="relic-buy-button" type="button" data-relic-id="${relic.id}" ${relicButtonDisabled}>
-      Buy
-    </button>
-  </article>
-`;
+    relicList.appendChild(relicCard);
   }
 
   linkRelicButtons();
@@ -133,12 +125,16 @@ function loadRelics() {
 //////////     RELIC BUTTON STATE    ///////////////
 /////////////////////////////////////////////////////
 
-// So, by default they are enabled, but then if the player doesnt have enough to buy it, or if they have maxed it, then they are shown as disabled.
+/**
+ * This function decides if a relic button should be disabled
+ * A relic is disabled if the player does not have enough currency
+ * A relic is also disabled if the player already owns the maximum amount
+ */
 function getRelicDisabled(relic) {
   const relicCost = getRelicCost(relic);
   const relicOwned = getRelicOwned(relic);
   const playerCurrency = playerStatus[relic.currency];
-  var relicButtonDisabled = "";
+  let relicButtonDisabled = "";
 
   if (playerCurrency < relicCost) {
     relicButtonDisabled = "disabled";
@@ -157,7 +153,11 @@ function getRelicDisabled(relic) {
 //////////       RELIC PURCHASING    ///////////////
 /////////////////////////////////////////////////////
 
-// This function connects the relic buy buttons to the buyRelic function
+/**
+ * This function links each relic buy button to the buyRelic function.
+ * After the relic cards are added to the page, this function finds
+ * all the relic buttons and adds a click event to each one
+ */
 function linkRelicButtons() {
   const relicBuyButtons = document.querySelectorAll(".relic-buy-button");
 
@@ -171,7 +171,12 @@ function linkRelicButtons() {
     relicBuyButton.addEventListener("click", buyRelic);
   }
 }
-// When a relic buy button is clicked it gets the relic id from the button data attribute, finds the corresponding relic object and then attempts to buy it
+/**
+ * This function runs when a relic buy button is clicked
+ * It gets the relic id from the button
+ * Then it finds that relic in the JSON data
+ * Then it tries to buy that relic.
+ */
 function buyRelic(event) {
   const relicButton = event.target;
   const relicId = relicButton.dataset.relicId;
@@ -180,7 +185,11 @@ function buyRelic(event) {
   buyRelicItem(relic);
 }
 
-// This is to find the relic object that matches the relic id from the data of the button that was clicked
+/**
+ * This function finds one relic from the JSON data
+ * It receives a relic id
+ * Then it looks through all the relics until it finds the matching relic
+ */
 function getRelic(relicId) {
   const relics = jsonObjects.relics;
   let matchingRelic = {};
@@ -200,7 +209,12 @@ function getRelic(relicId) {
   return matchingRelic;
 }
 
-// Checks if the player has enough currency to buy the thing, and if yes then it applies the effect of relic and updates all the stuff
+/**
+ * This function tries to buy a relic
+ * First it checks if the player has enough currency
+ * Then it checks if the relic has a maximum amount
+ * If the player can buy the relic, it finishes the purchase
+ */
 function buyRelicItem(relic) {
   const relicCost = getRelicCost(relic);
   const relicOwned = getRelicOwned(relic);
@@ -218,7 +232,12 @@ function buyRelicItem(relic) {
   }
 }
 
-// When player succesfully buys relic, this updates the player status substracting currency, adding to relic owned, and applies effect of relic, then updates displays
+/**
+ * This function finishes a relic purchase
+ * It subtracts the relic cost from the player's currency
+ * It adds one to the amount owned for that relic
+ * Then it applies the relic effect and updates the display
+ */
 function finishRelicBuy(relic, relicCost, relicOwned) {
   playerStatus[relic.currency] = playerStatus[relic.currency] - relicCost;
   playerStatus.ownedRelics[relic.id] = relicOwned + 1;
@@ -232,7 +251,10 @@ function finishRelicBuy(relic, relicCost, relicOwned) {
 //////////        RELIC EFFECTS      ///////////////
 /////////////////////////////////////////////////////
 
-// This function applies the effect of the relic to the player status (In this case it checks if the effect type is click power and if yes then it adds the effect value to the spooks per click)
+/**
+ * This function applies the effect of a relic
+ * Right now it handles click power relics
+ */
 function useRelicEffect(relic) {
   if (relic.effectType === "clickPower") {
     playerStatus.spooksPerClick =
@@ -240,7 +262,11 @@ function useRelicEffect(relic) {
   }
 }
 
-// This function gets how many of the relic the player owns, if they dont own any it shows 0
+/**
+ * This function gets how many of a relic the player owns
+ * If the player does not own that relic yet
+ * it returns 0.
+ */
 function getRelicOwned(relic) {
   let relicOwned = playerStatus.ownedRelics[relic.id];
 
@@ -251,7 +277,12 @@ function getRelicOwned(relic) {
   return relicOwned;
 }
 
-// Calculates the cost of the relic based on: baseCost * (costMultiplier ** relicOwned), and then rounds it down to the nearest whole number
+/**
+ * This function gets the current cost of a relic
+ * The cost starts with the baseCost from the JSON file
+ * Every time the player buys the relic, the cost goes up
+ * using the costMultiplier from the JSON file
+ */
 function getRelicCost(relic) {
   const relicOwned = getRelicOwned(relic);
   const relicCost = relic.baseCost * Math.pow(relic.costMultiplier, relicOwned);
