@@ -9,6 +9,7 @@
   --parchment: #f1dfc1;
   --spook-purple: #be88ff;
   --spook-purple-deep: #5b1d98;
+  --decay-green: #66e777;
   --font-hero: "MedievalSharp", "IM Fell English SC", Georgia, serif;
   --font-heading: "Cinzel", Georgia, serif;
   --font-body:
@@ -312,6 +313,66 @@ button {
   border: 47px solid transparent;
   border-image: url("assets/images/frame.png") 47 / 47px / 0 stretch;
   pointer-events: none;
+}
+
+/* ######################################### */
+/* ##########   GRAVEYARD PANEL   ########## */
+/* ######################################### */
+
+.graveyard-section {
+  display: grid;
+  min-height: 280px;
+  align-content: space-between;
+  overflow: hidden;
+  border-radius: 25px;
+  background-image:
+    linear-gradient(rgba(5, 5, 5, 0.34), rgba(5, 5, 5, 0.64)),
+    url("assets/images/graveyard.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.graveyard-title {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding-top: 14px;
+  color: var(--parchment);
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+}
+
+.graveyard-decay-message {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding-bottom: 12px;
+  color: var(--parchment);
+  font-size: 0.8rem;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.graveyard-decay-generation {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding-bottom: 12px;
+  color: var(--parchment);
+  font-size: 0.8rem;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.graveyard-decay-number {
+  color: var(--decay-green);
+}
+
+.hidden {
+  display: none;
 }
 
 /* ######################################### */
