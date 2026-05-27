@@ -16,7 +16,7 @@ const relicCardTemplate = function(data) {
                     <p class="relic-description">${data.description}</p>
                 </div>
 
-                <button class="relic-buy-button" type="button">Buy</button>
+                <button class="relic-buy-button" type="button" data-relic-id="${data.id}">Buy</button>
             </article>
         </div>
     `;

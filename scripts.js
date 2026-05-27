@@ -63,54 +63,6 @@ function loadRelics() {
   const relics = jsonObjects.relics;
   const RelicList = new window.ravenwood.views.RelicList(relics, relicList);
   RelicList.render();
-
-  // relicList.innerHTML = "";
-
-  // for (
-  //   let relicIndex = 0;
-  //   relicIndex < relics.length;
-  //   relicIndex = relicIndex + 1
-  // ) {
-  //   const relic = relics[relicIndex];
-  //   const relicCost = getRelicCost(relic);
-  //   const relicOwned = getRelicOwned(relic);
-  //   const relicButtonDisabled = getRelicDisabled(relic);
-  //   let relicCostText = relicCost + " " + relic.currency;
-  //   let relicMaxOwnedText = "";
-
-  //   if (relic.maxOwned !== undefined) {
-  //     relicMaxOwnedText = relicOwned + "/" + relic.maxOwned;
-
-  //     if (relicOwned >= relic.maxOwned) {
-  //       relicCostText = "Maxed";
-  //     }
-  //   }
-
-    // const relicCard = relicCardTemplate.content.cloneNode(true); // Clone the relic card template
-
-    // const relicCardArticle = relicCard.querySelector(".relic-card");
-    // const relicImage = relicCard.querySelector(".relic-image");
-    // const relicName = relicCard.querySelector(".relic-name");
-    // const relicCostElement = relicCard.querySelector(".relic-cost");
-    // const relicOwnedElement = relicCard.querySelector(".relic-owned");
-    // const relicDescription = relicCard.querySelector(".relic-description");
-    // const relicBuyButton = relicCard.querySelector(".relic-buy-button");
-
-    // relicImage.src = relic.image;
-    // relicName.textContent = relic.name;
-    // relicCostElement.textContent = relicCostText;
-    // relicOwnedElement.textContent = relicMaxOwnedText;
-    // relicDescription.textContent = relic.description;
-    // relicBuyButton.dataset.relicId = relic.id;
-
-    // if (relicButtonDisabled === "disabled") {
-    //   relicCardArticle.classList.add("inactive");
-    //   relicBuyButton.disabled = true;
-    // }
-
-    // relicList.appendChild(relicCard);
-  // }
-
   linkRelicButtons();
 }
 

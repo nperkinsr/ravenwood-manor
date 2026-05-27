@@ -72,7 +72,6 @@ class RelicList {
                 renderedHTML.querySelector('.relic-card').classList.add("inactive");
                 renderedHTML.querySelector('.relic-buy-button').disabled = true;
             }
-            console.log(renderedHTML)
             this.container.insertAdjacentElement('beforeend', renderedHTML);
         });
     }
