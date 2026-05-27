@@ -15,7 +15,9 @@ class Template {
 
     render() {
         this.cloneTemplate();
-        this.renderedHTML = this.template(this.data);
+        this.HTMLString = this.template(this.data);
+        this.renderedHTML = document.createElement('div');
+        this.renderedHTML.innerHTML = this.HTMLString;
         return this.renderedHTML;
     }
 }

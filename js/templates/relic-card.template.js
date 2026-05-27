@@ -9,8 +9,8 @@ const relicCardTemplate = function(data) {
                     <h3 class="relic-name">${data.relicName}</h3>
 
                     <div class="relic-meta">
-                        <span class="relic-cost">${data.cost}</span>
-                        <span class="relic-owned">${data.owned}</span>
+                        <span class="relic-cost">${data.relicCostText}</span>
+                        <span class="relic-owned">${data.relicMaxOwnedText}</span>
                     </div>
 
                     <p class="relic-description">${data.description}</p>
