@@ -2,17 +2,7 @@
 //////////       PLAYER STATUS      /////////////////
 /////////////////////////////////////////////////////
 
-const playerStatus = {
-  spooks: 0,
-  spooksPerSecond: 0,
-  spooksPerClick: 1,
-  gold: 0,
-  decay: 0,
-  ectoplasm: 0,
-  ownedRelics: {},
-  graveyardUnlocked: false,
-  graveyardLevel: null,
-};
+const playerStatus = window.ravenwood.playerStatus;
 
 /////////////////////////////////////////////////////
 //////////       DOM ELEMENTS      ///////////////
@@ -24,7 +14,7 @@ const spooksPerClick = document.querySelector("#spook-rate-per-click span");
 const collectButton = document.querySelector("#collect-spooks-button");
 const relicsSection = document.querySelector("#relics-section");
 const relicList = document.querySelector(".relic-list");
-const relicCardTemplate = document.querySelector("#relic-card-template");
+// const relicCardTemplate = document.querySelector("#relic-card-template");
 
 /////////////////////////////////////////////////////
 //////////       COUNTER DISPLAY      ///////////////
@@ -71,52 +61,55 @@ loadGameData();
 
 function loadRelics() {
   const relics = jsonObjects.relics;
+  const RelicList = new window.ravenwood.views.RelicList(relics, relicList);
+  RelicList.render();
 
-  relicList.innerHTML = "";
+  // relicList.innerHTML = "";
 
-  for (
-    let relicIndex = 0;
-    relicIndex < relics.length;
-    relicIndex = relicIndex + 1
-  ) {
-    const relic = relics[relicIndex];
-    const relicCost = getRelicCost(relic);
-    const relicOwned = getRelicOwned(relic);
-    const relicButtonDisabled = getRelicDisabled(relic);
-    let relicCostText = relicCost + " " + relic.currency;
-    let relicMaxOwnedText = "";
+  // for (
+  //   let relicIndex = 0;
+  //   relicIndex < relics.length;
+  //   relicIndex = relicIndex + 1
+  // ) {
+  //   const relic = relics[relicIndex];
+  //   const relicCost = getRelicCost(relic);
+  //   const relicOwned = getRelicOwned(relic);
+  //   const relicButtonDisabled = getRelicDisabled(relic);
+  //   let relicCostText = relicCost + " " + relic.currency;
+  //   let relicMaxOwnedText = "";
 
-    if (relic.maxOwned !== undefined) {
-      relicMaxOwnedText = relicOwned + "/" + relic.maxOwned;
+  //   if (relic.maxOwned !== undefined) {
+  //     relicMaxOwnedText = relicOwned + "/" + relic.maxOwned;
 
-      if (relicOwned >= relic.maxOwned) {
-        relicCostText = "Maxed";
-      }
-    }
+  //     if (relicOwned >= relic.maxOwned) {
+  //       relicCostText = "Maxed";
+  //     }
+  //   }
 
-    const relicCard = relicCardTemplate.content.cloneNode(true); // Clone the relic card template
-    const relicCardArticle = relicCard.querySelector(".relic-card");
-    const relicImage = relicCard.querySelector(".relic-image");
-    const relicName = relicCard.querySelector(".relic-name");
-    const relicCostElement = relicCard.querySelector(".relic-cost");
-    const relicOwnedElement = relicCard.querySelector(".relic-owned");
-    const relicDescription = relicCard.querySelector(".relic-description");
-    const relicBuyButton = relicCard.querySelector(".relic-buy-button");
+    // const relicCard = relicCardTemplate.content.cloneNode(true); // Clone the relic card template
 
-    relicImage.src = relic.image;
-    relicName.textContent = relic.name;
-    relicCostElement.textContent = relicCostText;
-    relicOwnedElement.textContent = relicMaxOwnedText;
-    relicDescription.textContent = relic.description;
-    relicBuyButton.dataset.relicId = relic.id;
+    // const relicCardArticle = relicCard.querySelector(".relic-card");
+    // const relicImage = relicCard.querySelector(".relic-image");
+    // const relicName = relicCard.querySelector(".relic-name");
+    // const relicCostElement = relicCard.querySelector(".relic-cost");
+    // const relicOwnedElement = relicCard.querySelector(".relic-owned");
+    // const relicDescription = relicCard.querySelector(".relic-description");
+    // const relicBuyButton = relicCard.querySelector(".relic-buy-button");
 
-    if (relicButtonDisabled === "disabled") {
-      relicCardArticle.classList.add("inactive");
-      relicBuyButton.disabled = true;
-    }
+    // relicImage.src = relic.image;
+    // relicName.textContent = relic.name;
+    // relicCostElement.textContent = relicCostText;
+    // relicOwnedElement.textContent = relicMaxOwnedText;
+    // relicDescription.textContent = relic.description;
+    // relicBuyButton.dataset.relicId = relic.id;
 
-    relicList.appendChild(relicCard);
-  }
+    // if (relicButtonDisabled === "disabled") {
+    //   relicCardArticle.classList.add("inactive");
+    //   relicBuyButton.disabled = true;
+    // }
+
+    // relicList.appendChild(relicCard);
+  // }
 
   linkRelicButtons();
 }

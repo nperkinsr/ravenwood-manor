@@ -1,8 +1,9 @@
 {
   "relics": [{
       "id": "haunted_ring",
-      "name": "Haunted Ring",
+      "relicName": "Haunted Ring",
       "image": "assets/images/relics/ring.png",
+      "imageAlt": "Haunted Ring",
       "currency": "spooks",
       "baseCost": 10,
       "costMultiplier": 1.2,
@@ -13,7 +14,7 @@
     },
     {
       "id": "possessed_finger",
-      "name": "Possessed Finger",
+      "relicName": "Possessed Finger",
       "image": "assets/images/relics/finger.png",
       "currency": "spooks",
       "baseCost": 10,
@@ -25,7 +26,7 @@
     },
     {
       "id": "monkey_paw",
-      "name": "Monkey Paw",
+      "relicName": "Monkey Paw",
       "image": "assets/images/default.jpg",
       "currency": "gold",
       "baseCost": 120,
@@ -36,7 +37,7 @@
     },
     {
       "id": "melted_candle",
-      "name": "Melted Candle",
+      "relicName": "Melted Candle",
       "image": "assets/images/default.jpg",
       "currency": "gold",
       "baseCost": 50,
@@ -47,7 +48,7 @@
     },
     {
       "id": "cracked_mirror",
-      "name": "Cracked Mirror",
+      "relicName": "Cracked Mirror",
       "image": "assets/images/default.jpg",
       "currency": "gold",
       "baseCost": 150,
@@ -58,7 +59,7 @@
     },
     {
       "id": "ashen_urn",
-      "name": "Ashen Urn",
+      "relicName": "Ashen Urn",
       "image": "assets/images/default.jpg",
       "currency": "gold",
       "baseCost": 80,
@@ -69,7 +70,7 @@
     },
     {
       "id": "blood_contract",
-      "name": "Blood Contract",
+      "relicName": "Blood Contract",
       "image": "assets/images/default.jpg",
       "currency": "gold",
       "baseCost": 130,
@@ -80,7 +81,7 @@
     },
     {
       "id": "forgotten_ledger",
-      "name": "Forgotten Ledger",
+      "relicName": "Forgotten Ledger",
       "image": "assets/images/default.jpg",
       "currency": "gold",
       "baseCost": 240,
@@ -91,7 +92,7 @@
     },
     {
       "id": "grave_dust",
-      "name": "Grave Dust",
+      "relicName": "Grave Dust",
       "image": "assets/images/default.jpg",
       "currency": "gold",
       "baseCost": 80,
@@ -102,7 +103,7 @@
     },
     {
       "id": "torn_page",
-      "name": "Torn Page",
+      "relicName": "Torn Page",
       "image": "assets/images/default.jpg",
       "currency": "gold",
       "baseCost": 130,
@@ -113,7 +114,7 @@
     },
     {
       "id": "phantom_vial",
-      "name": "Phantom Vial",
+      "relicName": "Phantom Vial",
       "image": "assets/images/default.jpg",
       "currency": "gold",
       "baseCost": 160,
