@@ -94,6 +94,36 @@ function getRelicDisabled(relic) {
   return relicButtonDisabled;
 }
 
+/**
+ * Updates the current relic cards without rebuilding them
+
+ * Needed because loadig the relics makes tooltops flicker, and not loading  the relics
+ * maskes the relic buttons not update when the player has enough currency..
+ */
+function updateRelicButtonStates() {
+  const relicBuyButtons = document.querySelectorAll(".relic-buy-button");
+
+  for (
+    let buttonIndex = 0;
+    buttonIndex < relicBuyButtons.length;
+    buttonIndex = buttonIndex + 1
+  ) {
+    const relicBuyButton = relicBuyButtons[buttonIndex];
+    const relicId = relicBuyButton.dataset.relicId; // Get the relic id from the butons data attribute
+    const relic = getRelic(relicId);
+    const relicCard = relicBuyButton.closest(".relic-card"); // Gets the relic card element that is the parent of the button
+    const relicButtonDisabled = getRelicDisabled(relic); // Checks if the relic should be disabled
+
+    if (relicButtonDisabled === "disabled") {
+      relicBuyButton.disabled = true;
+      relicCard.classList.add("inactive");
+    } else {
+      relicBuyButton.disabled = false;
+      relicCard.classList.remove("inactive");
+    }
+  }
+}
+
 /////////////////////////////////////////////////////
 //////////       RELIC PURCHASING    ///////////////
 /////////////////////////////////////////////////////
@@ -225,7 +255,7 @@ function collectSpooksPerSecond() {
     playerStatus.spooks = playerStatus.spooks + playerStatus.spooksPerSecond;
 
     updateSpookCounterDisplay();
-    loadRelics();
+    updateRelicButtonStates();
   }
 }
 
