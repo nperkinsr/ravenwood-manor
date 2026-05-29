@@ -123,8 +123,140 @@
       "effectValue": 10,
       "description": "Duplicates 10% of current ectoplasm fragments"
     }],
-  "graveyard": [],
+
+  "graveyard": [{
+      "id": "basic_graveyard",
+      "graveyardName": "Basic Graveyard",
+      "image": "assets/images/graveyard.jpg",
+      "currency": "spooks",
+      "maxLevel": 5,
+      "description": "A small graveyard that begins producing Decay when purchased.",
+      "levels": [{
+          "level": 1,
+          "cost": 5000,
+          "decayPerSecond": 0.25
+        },
+        {
+          "level": 2,
+          "cost": 7200,
+          "decayPerSecond": 0.5
+        },
+        {
+          "level": 3,
+          "cost": 8640,
+          "decayPerSecond": 1
+        },
+        {
+          "level": 4,
+          "cost": 10360,
+          "decayPerSecond": 2
+        },
+        {
+          "level": 5,
+          "cost": 12440,
+          "decayPerSecond": 3.5
+        }]
+    },
+    {
+      "id": "overgrown_graveyard",
+      "graveyardName": "Overgrown Graveyard",
+      "image": "assets/images/graveyard.jpg",
+      "currency": "spooks",
+      "maxLevel": 5,
+      "description": "A larger graveyard that produces a stronger flow of Decay.",
+      "levels": [{
+          "level": 1,
+          "cost": 20000,
+          "decayPerSecond": 5
+        },
+        {
+          "level": 2,
+          "cost": 24000,
+          "decayPerSecond": 7
+        },
+        {
+          "level": 3,
+          "cost": 30000,
+          "decayPerSecond": 10
+        },
+        {
+          "level": 4,
+          "cost": 38000,
+          "decayPerSecond": 14
+        },
+        {
+          "level": 5,
+          "cost": 48000,
+          "decayPerSecond": 19
+        }]
+    },
+    {
+      "id": "ancient_cemetery",
+      "graveyardName": "Ancient Cemetery",
+      "image": "assets/images/graveyard.jpg",
+      "currency": "spooks",
+      "maxLevel": 5,
+      "description": "An old cemetery that greatly increases Decay generation.",
+      "levels": [{
+          "level": 1,
+          "cost": 75000,
+          "decayPerSecond": 25
+        },
+        {
+          "level": 2,
+          "cost": 90000,
+          "decayPerSecond": 34
+        },
+        {
+          "level": 3,
+          "cost": 115000,
+          "decayPerSecond": 45
+        },
+        {
+          "level": 4,
+          "cost": 145000,
+          "decayPerSecond": 60
+        },
+        {
+          "level": 5,
+          "cost": 185000,
+          "decayPerSecond": 80
+        }]
+    },
+    {
+      "id": "mass_grave",
+      "graveyardName": "Mass Grave",
+      "image": "assets/images/graveyard.jpg",
+      "currency": "spooks",
+      "maxLevel": 5,
+      "description": "The strongest graveyard upgrade, producing a massive amount of Decay.",
+      "levels": [{
+          "level": 1,
+          "cost": 250000,
+          "decayPerSecond": 110
+        },
+        {
+          "level": 2,
+          "cost": 300000,
+          "decayPerSecond": 145
+        },
+        {
+          "level": 3,
+          "cost": 390000,
+          "decayPerSecond": 190
+        },
+        {
+          "level": 4,
+          "cost": 510000,
+          "decayPerSecond": 250
+        },
+        {
+          "level": 5,
+          "cost": 670000,
+          "decayPerSecond": 325
+        }]
+    }],
+    
   "rooms": [],
   "entities": []
 }
-
