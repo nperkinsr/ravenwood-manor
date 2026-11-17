@@ -542,3 +542,32 @@ button {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   }
 }
+
+/* ######################################### */
+/* #######   GRAVEYARD LOCKED PANEL  ####### */
+/* ######################################### */
+
+.graveyard-locked-content {
+  position: relative;
+  z-index: 1; /* so that the content is above the background image */
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+  padding: 12px 0;
+  text-align: center;
+}
+
+.graveyard-locked-title {
+  margin: 0;
+  color: var(--parchment);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.graveyard-locked-description {
+  margin: 0;
+  color: rgba(241, 223, 193, 0.78);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
