@@ -124,7 +124,29 @@
             per second
           </p>
         </section>
-        <section id="decay-section" class="ornate-panel decay-section"></section>
+        <section id="decay-section" class="ornate-panel decay-section" aria-labelledby="graveyard-locked-title">
+          <div class="graveyard-locked-content">
+            <h2 id="graveyard-locked-title" class="graveyard-locked-title">
+              THE GRAVEYARD IS LOCKED
+            </h2>
+
+            <p id="graveyard-locked-description" class="graveyard-locked-description">
+              Unlock your first graveyard to begin generating decay automatically.
+            </p>
+
+            <button id="unlock-basic-graveyard-button" class="graveyard-unlock-button" type="button"
+              aria-describedby="graveyard-locked-description" aria-label="Unblock Basic Graveyard. Cost loading."
+              disabled>
+              <span id="graveyard-unlock-label" class="graveyard-unlock-label">
+                UNBLOCK BASIC GRAVEYARD
+              </span>
+              <span class="graveyard-unlock-cost">
+                <img src="assets/images/spook-counter.png" alt="" class="graveyard-unlock-icon">
+                <span id="graveyard-unlock-price"></span> <!-- For the price -->
+              </span>
+            </button>
+          </div>
+        </section>
         <section id="graveyard-upgrades-section" class="ornate-panel graveyard-upgrades-section"></section>
       </aside>
     </section>
