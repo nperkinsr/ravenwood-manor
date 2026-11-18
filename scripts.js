@@ -14,6 +14,12 @@ const spooksPerClick = document.querySelector("#spook-rate-per-click span");
 const collectButton = document.querySelector("#collect-spooks-button");
 const relicsSection = document.querySelector("#relics-section");
 const relicList = document.querySelector(".relic-list");
+//NEW
+const graveyardUnlockButton = document.querySelector(
+  "#unlock-basic-graveyard-button",
+);
+const graveyardUnlockLabel = document.querySelector("#graveyard-unlock-label");
+const graveyardUnlockPrice = document.querySelector("#graveyard-unlock-price");
 // const relicCardTemplate = document.querySelector("#relic-card-template");
 
 /////////////////////////////////////////////////////
@@ -21,7 +27,7 @@ const relicList = document.querySelector(".relic-list");
 /////////////////////////////////////////////////////
 
 function updateSpookCounterDisplay() {
-  spookCount.textContent = playerStatus.spooks;
+  spookCount.textContent = playerStatus.spooks.toLocaleString("en-US");
   spooksPerSecond.textContent = playerStatus.spooksPerSecond;
   spooksPerClick.textContent = playerStatus.spooksPerClick;
 }
@@ -51,6 +57,7 @@ async function loadGameData() {
 
   jsonObjects = jsonData;
   loadRelics();
+  renderGraveyardLockedPanel();
 }
 
 loadGameData();
@@ -288,4 +295,44 @@ function getRelicCost(relic) {
   const roundedRelicCost = Math.floor(relicCost);
 
   return roundedRelicCost;
+}
+
+/////////////////////////////////////////////////////
+//////////    GRAVEYARD LOCKED PANEL     ////////////
+////////////////////////////////////////////////////
+
+function renderGraveyardLockedPanel() {
+  const graveyards = jsonObjects.graveyard;
+  let basicGraveyard;
+
+  // Find the basic graveyard
+  for (let index = 0; index < graveyards.length; index = index + 1) {
+    const graveyard = graveyards[index];
+
+    if (graveyard.id === "basic_graveyard") {
+      basicGraveyard = graveyard;
+    }
+  }
+
+  const graveyardLevels = basicGraveyard.levels;
+  let firstLevel;
+
+  // Find the graveyards fist level
+  for (let index = 0; index < graveyardLevels.length; index = index + 1) {
+    const graveyardLevel = graveyardLevels[index];
+
+    if (graveyardLevel.level === 1) {
+      firstLevel = graveyardLevel;
+    }
+  }
+
+  const graveyardName = basicGraveyard.graveyardName;
+  const graveyardCost = firstLevel.cost;
+  const formattedCost = graveyardCost.toLocaleString("en-US"); // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString#using_tolocalestring
+
+  // Updates the text displayed on the button
+  const buttonText = "UNBLOCK " + graveyardName;
+
+  graveyardUnlockLabel.textContent = buttonText;
+  graveyardUnlockPrice.textContent = formattedCost;
 }

@@ -542,3 +542,111 @@ button {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   }
 }
+
+/* ######################################### */
+/* #######   GRAVEYARD LOCKED PANEL  ####### */
+/* ######################################### */
+
+.graveyard-locked-content {
+  position: relative;
+  z-index: 1; /* so that the content is above the background image */
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+  padding: 12px 0 20px;
+  text-align: center;
+}
+
+.graveyard-locked-title {
+  margin: 0;
+  color: var(--parchment);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.graveyard-locked-description {
+  margin: 0;
+  color: rgba(241, 223, 193, 0.78);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.graveyard-unlock-button {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+  min-height: 72px;
+  padding: 12px 8px;
+  border: 1px solid #666b59;
+  border-radius: 0.8rem;
+  background: #20221f;
+  box-shadow:
+    inset 0 1px 0 rgba(241, 223, 193, 0.08),
+    inset 0 -3px 0 rgba(0, 0, 0, 0.3),
+    0 3px 8px rgba(0, 0, 0, 0.3);
+  color: var(--parchment);
+  font-family: var(--font-heading);
+  cursor: pointer;
+}
+
+.graveyard-unlock-label {
+  color: var(--decay-green);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.graveyard-unlock-cost {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.graveyard-unlock-icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.graveyard-unlock-button:enabled:hover,
+.graveyard-unlock-button:enabled:focus-visible {
+  background: #2c2f29;
+  border-color: #858c73;
+}
+
+.graveyard-unlock-button:enabled:active {
+  transform: translateY(1px);
+  background: #171916;
+}
+
+.graveyard-unlock-button:focus-visible {
+  outline: 2px solid rgba(241, 223, 193, 0.8);
+  outline-offset: 3px;
+}
+
+.graveyard-unlock-button:disabled {
+  background: rgba(5, 5, 5, 0.54);
+  border-color: rgba(241, 223, 193, 0.28);
+  box-shadow: none;
+  color: rgba(241, 223, 193, 0.78);
+  cursor: not-allowed;
+}
+
+.graveyard-unlock-button:disabled .graveyard-unlock-label {
+  color: #929789;
+}
+
+.graveyard-unlock-button:disabled .graveyard-unlock-icon {
+  filter: grayscale(1);
+  opacity: 0.65;
+}
